@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d0ab8a5b5004b93bc9f7f8490935cd, type: 3}
+  m_Name: Defeat the Skeleton Giant
+  m_EditorClassIdentifier: 
+  toolTip: '<b>{NAME}</b>
+
+    The Skeleton Giant is the Skeleton Army''s Leader,
+    defeat it and you can save the VIllage!
+
+
+    Tasks:
+
+    * Kill {KILLTARGET}:
+    {KILLED}/{KILLAMOUNT}
+
+
+    Rewards:
+
+    * {REWARDGOLD} Gold
+
+    * {REWARDEXPERIENCE}
+    Experience
+
+    * {REWARDITEM}
+
+
+    {STATUS}'
+  requiredLevel: 5
+  predecessor: {fileID: 11400000, guid: 36c0cc3de8cbfcb4f9b47c5fb2103b64, type: 2}
+  rewardGold: 1000
+  rewardExperience: 150
+  rewardItem: {fileID: 11400000, guid: 23bf22ba24d3447968ce8b813ab51fb4, type: 2}
+  killTarget: {fileID: 11474358, guid: 05682822ff5a34e3f9ee59133371f266, type: 3}
+  killAmount: 15
