@@ -4,12 +4,21 @@
 using UnityEngine;
 using System.Text;
 
-[CreateAssetMenu(menuName="uMMORPG Quest/Kill Quest", order=999)]
-public class KillQuest : ScriptableQuest
+[CreateAssetMenu(menuName="uMMORPG Quest/Repeatable Kill Quest", order=999)]
+public class KillQuestRepeatbale : ScriptableQuest
 {
     [Header("Fulfillment")]
     public Monster killTarget;
     public int killAmount;
+
+ 
+
+    //makes quest repeatable
+
+    public override bool Repeatable (Player player, Quest quest){
+        return quest.isRepeatable = true;
+
+    }
 
     // events //////////////////////////////////////////////////////////////////
     public override void OnKilled(Player player, int questIndex, Entity victim)
@@ -27,12 +36,8 @@ public class KillQuest : ScriptableQuest
     // fulfillment /////////////////////////////////////////////////////////////
     public override bool IsFulfilled(Player player, Quest quest)
     {
+        
         return quest.progress >= killAmount;
-    }
-
-    public override bool Repeatable(Player player, Quest quest){
-
-        return quest.isRepeatable = false;
     }
 
     // tooltip /////////////////////////////////////////////////////////////////

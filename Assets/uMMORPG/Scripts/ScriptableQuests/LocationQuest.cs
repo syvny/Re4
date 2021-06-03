@@ -35,6 +35,10 @@ public class LocationQuest : ScriptableQuest
         return quest.progress == 1;
     }
 
+    public override bool Repeatable(Player player, Quest quest){
+        return quest.isRepeatable = false;
+    }
+
     // tooltip /////////////////////////////////////////////////////////////////
     public override string ToolTip(Player player, Quest quest)
     {

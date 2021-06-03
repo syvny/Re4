@@ -2208,6 +2208,10 @@ public partial class Player : Entity
         foreach (Quest quest in quests)
             if (quest.name == questName && quest.completed)
                 return true;
+
+            else if (quest.name == questName && quest.completed && quest.isRepeatable == true )
+                
+                return false;
         return false;
     }
 
@@ -2261,7 +2265,8 @@ public partial class Player : Entity
         return CountIncompleteQuests() < activeQuestLimit &&
                level >= quest.requiredLevel &&          // has required level?
                GetQuestIndexByName(quest.name) == -1 && // not accepted yet?
-               (quest.predecessor == null || HasCompletedQuest(quest.predecessor.name));
+               (quest.predecessor == null || HasCompletedQuest(quest.predecessor.name)) ||
+               quest.isRepeatable;
     }
 
     [Command]
@@ -2333,8 +2338,17 @@ public partial class Player : Entity
                             InventoryAdd(new Item(quest.rewardItem), 1);
 
                         // complete quest
-                        quest.completed = true;
-                        quests[index] = quest;
+                        //repeatable
+                        if(quest.isRepeatable){
+                            quest.Repeatable(this);
+                            quest.completed = false;
+                            quest.progress = 0;
+                            quests[index] = quest;}
+                            
+                        else{
+                            quest.completed = true;
+                            quests[index] = quest;}
+                            
                     }
                 }
             }
