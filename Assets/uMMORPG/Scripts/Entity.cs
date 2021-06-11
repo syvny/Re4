@@ -25,6 +25,7 @@
 // idea in general to increase performance.
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using Mirror;
 using TMPro;
@@ -995,11 +996,16 @@ public abstract partial class Entity : NetworkBehaviourNonAlloc
     // ontrigger ///////////////////////////////////////////////////////////////
     // protected so that inheriting classes can use OnTrigger too, while also
     // calling those here via base.OnTriggerEnter/Exit
+
+    public static bool levelRes;
     protected virtual void OnTriggerEnter(Collider col)
     {
         // check if trigger first to avoid GetComponent tests for environment
         if (col.isTrigger && col.GetComponent<SafeZone>())
             inSafeZone = true;
+    //Level Restriction
+        if (col.isTrigger && col.GetComponent<LevelRestriction>())
+            levelRes = true;
     }
 
     protected virtual void OnTriggerExit(Collider col)
@@ -1007,5 +1013,8 @@ public abstract partial class Entity : NetworkBehaviourNonAlloc
         // check if trigger first to avoid GetComponent tests for environment
         if (col.isTrigger && col.GetComponent<SafeZone>())
             inSafeZone = false;
+        if (col.isTrigger && col.GetComponent<LevelRestriction>())
+            levelRes = false;
     }
+
 }

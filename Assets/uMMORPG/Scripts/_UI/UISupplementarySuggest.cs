@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class UIRespawn : MonoBehaviour
+public partial class UISupplementarySuggest : MonoBehaviour
 {
     public GameObject panel;
     
@@ -16,12 +16,12 @@ public partial class UIRespawn : MonoBehaviour
         Player player = Player.localPlayer;
 
         // show while player is dead
-        if (player != null && player.health == 0)
-        {
-            panel.SetActive(true);
-            button.onClick.SetListener(() => { player.CmdRespawn(); });
-        }
-        else panel.SetActive(false);
+       if(player != null && player.health == 0 && player.activeQuestLimit>0 ){
+           
+           
+           panel.SetActive(true);
+           button.onClick.SetListener(() => { panel.SetActive(false); });
+       }
 
        
     }

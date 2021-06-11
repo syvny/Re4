@@ -23,6 +23,7 @@ TagManager:
   - Pet
   - QuestLocation
   - NpcReviveSlot
+  - LevelRestrictedArea
   layers:
   - Default
   - TransparentFX
