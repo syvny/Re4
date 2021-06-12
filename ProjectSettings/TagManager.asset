@@ -23,6 +23,8 @@ TagManager:
   - Pet
   - QuestLocation
   - NpcReviveSlot
+  - LevelRestrictedArea
+  - SlowingArea
   layers:
   - Default
   - TransparentFX

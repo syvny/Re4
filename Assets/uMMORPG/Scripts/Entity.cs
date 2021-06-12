@@ -25,6 +25,7 @@
 // idea in general to increase performance.
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using Mirror;
 using TMPro;
@@ -266,7 +267,15 @@ public abstract partial class Entity : NetworkBehaviourNonAlloc
                 buffBonus += buff.speedBonus;
 
             // base + passives + buffs
-            return _speed.Get(level) + passiveBonus + buffBonus;
+            float tempspeed = _speed.Get(level) + passiveBonus + buffBonus;
+            
+            //slowed debuff
+            if(slowed==true)
+            return _speed.Get(level) + passiveBonus + buffBonus  - 3;
+            else
+
+            return _speed.Get(level) + passiveBonus + buffBonus;;
+         
         }
     }
 
@@ -995,11 +1004,20 @@ public abstract partial class Entity : NetworkBehaviourNonAlloc
     // ontrigger ///////////////////////////////////////////////////////////////
     // protected so that inheriting classes can use OnTrigger too, while also
     // calling those here via base.OnTriggerEnter/Exit
+
+    public static bool levelRes;
+    public static bool slowed;
     protected virtual void OnTriggerEnter(Collider col)
     {
         // check if trigger first to avoid GetComponent tests for environment
         if (col.isTrigger && col.GetComponent<SafeZone>())
             inSafeZone = true;
+    //Level Restriction
+        if (col.isTrigger && col.GetComponent<LevelRestriction>())
+            levelRes = true;
+    //Area Slow
+        if(col.isTrigger && col.GetComponent<SlowingArea>())
+            slowed = true;
     }
 
     protected virtual void OnTriggerExit(Collider col)
@@ -1007,5 +1025,10 @@ public abstract partial class Entity : NetworkBehaviourNonAlloc
         // check if trigger first to avoid GetComponent tests for environment
         if (col.isTrigger && col.GetComponent<SafeZone>())
             inSafeZone = false;
+        if (col.isTrigger && col.GetComponent<LevelRestriction>())
+            levelRes = false;
+        if(col.isTrigger && col.GetComponent<SlowingArea>())
+            slowed = false;
     }
+
 }
