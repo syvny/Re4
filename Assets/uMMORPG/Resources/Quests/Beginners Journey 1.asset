@@ -3,13 +3,14 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2d0ab8a5b5004b93bc9f7f8490935cd, type: 3}
-  m_Name: Beginners Journey
+  m_Name: Beginners Journey 1
   m_EditorClassIdentifier: 
   toolTip: '<b>{NAME}</b>
 
@@ -20,14 +21,16 @@ MonoBehaviour:
 
     Tasks:
 
-    * Kill {KILLTARGET}: {KILLED}/{KILLAMOUNT}
+    *
+    Kill {KILLTARGET}: {KILLED}/{KILLAMOUNT}
 
 
     Rewards:
 
     * {REWARDGOLD} Gold
 
-    * {REWARDEXPERIENCE} Experience
+    *
+    {REWARDEXPERIENCE} Experience
 
     * {REWARDITEM}
 
@@ -38,5 +41,6 @@ MonoBehaviour:
   rewardGold: 100
   rewardExperience: 70
   rewardItem: {fileID: 11400000, guid: 23bf22ba24d3447968ce8b813ab51fb4, type: 2}
-  killTarget: {fileID: 11474358, guid: 68fb15ce5f2e7eb44a8ac123d853b91a, type: 2}
+  isRepeatable: 0
+  killTarget: {fileID: 11474358, guid: 68fb15ce5f2e7eb44a8ac123d853b91a, type: 3}
   killAmount: 2
