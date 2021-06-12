@@ -289,12 +289,7 @@ public partial class Player : Entity
         new SkillbarEntry{reference="", hotKey=KeyCode.Alpha2},
         new SkillbarEntry{reference="", hotKey=KeyCode.Alpha3},
         new SkillbarEntry{reference="", hotKey=KeyCode.Alpha4},
-        new SkillbarEntry{reference="", hotKey=KeyCode.Alpha5},
-        new SkillbarEntry{reference="", hotKey=KeyCode.Alpha6},
-        new SkillbarEntry{reference="", hotKey=KeyCode.Alpha7},
-        new SkillbarEntry{reference="", hotKey=KeyCode.Alpha8},
-        new SkillbarEntry{reference="", hotKey=KeyCode.Alpha9},
-        new SkillbarEntry{reference="", hotKey=KeyCode.Alpha0},
+   
     };
 
     [Header("Quests")] // contains active and completed quests (=all)
@@ -887,6 +882,7 @@ public partial class Player : Entity
                  Warp(start.position);
 
         }
+            
         if (EventMoveStart()) {} // don't care
         if (EventSkillFinished()) {} // don't care
         if (EventTradeDone()) {} // don't care
@@ -3487,6 +3483,7 @@ public partial class Player : Entity
         return  inLevelRes = true;
         
     }
+
     protected override void OnTriggerEnter(Collider col)
     {
         // call base function too
@@ -3500,6 +3497,7 @@ public partial class Player : Entity
         if(col.CompareTag("LevelRestrictedArea"))
             
             eventInLevelRes();
+
     }
 
     // drag and drop ///////////////////////////////////////////////////////////
