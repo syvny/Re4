@@ -23,6 +23,10 @@ public class GatherQuest : ScriptableQuest
             player.InventoryRemove(new Item(gatherItem), gatherAmount);
     }
 
+    public override bool Repeatable(Player player, Quest quest){
+        return quest.isRepeatable = false;
+    }
+
     // tooltip /////////////////////////////////////////////////////////////////
     public override string ToolTip(Player player, Quest quest)
     {

@@ -30,10 +30,14 @@ public partial struct Quest
     // a quest is complete after finishing it at the npc and getting rewards
     public bool completed;
 
+    public bool isRepeatable;
+
     // constructors
     public Quest(ScriptableQuest data)
     {
         hash = data.name.GetStableHashCode();
+        //Repeatable Variable
+        isRepeatable = false;
         progress = 0;
         completed = false;
     }
@@ -64,6 +68,7 @@ public partial struct Quest
     public void OnLocation(Player player, int questIndex, Collider location) { data.OnLocation(player, questIndex, location); }
 
     // completion
+    public bool Repeatable(Player player) {return data.Repeatable(player, this);}
     public bool IsFulfilled(Player player) { return data.IsFulfilled(player, this); }
     public void OnCompleted(Player player) { data.OnCompleted(player, this); }
 
@@ -80,7 +85,13 @@ public partial struct Quest
         // note: field0 tooltip part is done in the scriptable quest, because it
         //       might be a number, might be 'Yes'/'No', etc.
         StringBuilder tip = new StringBuilder(data.ToolTip(player, this));
-        tip.Replace("{STATUS}", IsFulfilled(player) ? "<i>Complete!</i>" : "");
+            if(isRepeatable==false){
+                tip.Replace("{STATUS}", IsFulfilled(player) ? "<i>Complete!</i>" : "");}
+                
+            else  {
+                tip.Replace("{STATUS}", IsFulfilled(player) ? "<i>Repeatable!</i>" : "");
+            }  
+                
 
         // addon system hooks
         Utils.InvokeMany(typeof(Quest), this, "ToolTip_", tip);

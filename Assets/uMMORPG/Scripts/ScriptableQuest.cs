@@ -32,6 +32,9 @@ public abstract class ScriptableQuest : ScriptableObjectNonAlloc
     public long rewardExperience;
     public ScriptableItem rewardItem;
 
+    [Header("Repeatable")]
+    public bool isRepeatable;
+
     // events to hook into /////////////////////////////////////////////////////
     public virtual void OnKilled(Player player, int questIndex, Entity victim) {}
     public virtual void OnLocation(Player player, int questIndex, Collider location) {}
@@ -44,6 +47,8 @@ public abstract class ScriptableQuest : ScriptableObjectNonAlloc
     // OnComplete is called when the quest is completed at the npc.
     // -> can be used to remove quest items from the inventory, etc.
     public virtual void OnCompleted(Player player, Quest quest) {}
+
+    public abstract bool Repeatable(Player player, Quest quest);
 
     // tooltip /////////////////////////////////////////////////////////////////
     // fill in all variables into the tooltip
