@@ -3406,6 +3406,11 @@ public partial class Player : Entity
         }
     }
 
+
+    public bl_Joystick Joystick;
+    
+
+
     [Client]
     void WASDHandling()
     {
@@ -3415,8 +3420,9 @@ public partial class Player : Entity
         {
             // get horizontal and vertical input
             // note: no != 0 check because it's 0 when we stop moving rapidly
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
+            float horizontal = SimpleInput.GetAxis("Horizontal");
+            float vertical = SimpleInput.GetAxis("Vertical");
+
 
             if (horizontal != 0 || vertical != 0)
             {

@@ -62,10 +62,6 @@ public partial class UIShortcuts : MonoBehaviour
                 questsPanel.SetActive(!questsPanel.activeSelf);
             });
 
-            craftingButton.onClick.SetListener(() => {
-                craftingPanel.SetActive(!craftingPanel.activeSelf);
-            });
-
             partyButton.onClick.SetListener(() => {
                 partyPanel.SetActive(!partyPanel.activeSelf);
             });
@@ -74,9 +70,6 @@ public partial class UIShortcuts : MonoBehaviour
                 guildPanel.SetActive(!guildPanel.activeSelf);
             });
 
-            itemMallButton.onClick.SetListener(() => {
-                itemMallPanel.SetActive(!itemMallPanel.activeSelf);
-            });
 
             // show "(5)Quit" if we can't log out during combat
             // -> CeilToInt so that 0.1 shows as '1' and not as '0'
